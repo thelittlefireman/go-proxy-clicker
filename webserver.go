@@ -13,6 +13,7 @@ func webServer() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.Handle("/stop", http.HandlerFunc( StopHandler ))
 	http.Handle("/start", http.HandlerFunc( StartHandler ))
+	http.Handle("/settings", http.HandlerFunc( Settings ))
 	http.HandleFunc("/ws", wsHandler)
 	http.HandleFunc("/", serveTemplate)
 

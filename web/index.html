@@ -23,7 +23,7 @@
 							<li><a href="#" id="stop"><span class="glyphicon glyphicon-stop"></span> Stop</a></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+							<li><a href="#" id="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						</ul>
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 
 			function webSocConnect() {
 				if (window["WebSocket"]) {
-					conn = new WebSocket("ws://golang.berlioz.me/ws");
+					conn = new WebSocket("ws://golang.berlioz.me:5000/ws");
 					conn.onopen = function() {
 						$("#debug").html("<b>Connection established.</b>");
 					}
@@ -82,6 +82,9 @@
 				}
 			}
 			$(function() {
+                $( "#settings" ).click(function() {
+                    console.log('settings');
+                });
 				$( "#start" ).click(function() {
 					$( "#resultTable" ).toggle( "fast", function() {
 						$.get( "/start", function( data ) {
