@@ -7,6 +7,7 @@ import (
 )
 
 var indexPage string
+var settings string
 
 func webServer() {
 	fs := http.FileServer(http.Dir("web/static"))
@@ -29,6 +30,21 @@ func loadIndex() {
 	} else {
 		indexPage = string(content)
 	}
+}
+
+func loadSettings() {
+	Message("Load index", false)
+	content, err := ioutil.ReadFile("web/settings.html")
+	if err != nil {
+		settings = err.Error()
+	} else {
+		settings = string(content)
+	}
+}
+
+func Settings(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/html")
+	fmt.Fprint(w, settings);
 }
 
 func StopHandler(response http.ResponseWriter, request *http.Request){

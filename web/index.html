@@ -65,7 +65,7 @@
 
 			function webSocConnect() {
 				if (window["WebSocket"]) {
-					conn = new WebSocket("ws://golang.berlioz.me:5000/ws");
+					conn = new WebSocket("ws://golang.berlioz.me:80/ws");
 					conn.onopen = function() {
 						$("#debug").html("<b>Connection established.</b>");
 					}
