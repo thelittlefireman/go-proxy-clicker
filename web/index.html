@@ -83,7 +83,11 @@
 			}
 			$(function() {
                 $( "#settings" ).click(function() {
-                    console.log('settings');
+                    $.get( "/settings", function( data ) {
+
+                            console.log('settings');
+
+                    });
                 });
 				$( "#start" ).click(function() {
 					$( "#resultTable" ).toggle( "fast", function() {
